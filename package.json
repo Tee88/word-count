@@ -1,0 +1,20 @@
+{
+  "name": "scrape",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "docs": "jsdoc -c ./docConf.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jsdom": "^15.2.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "jsdoc": "^3.6.3"
+  }
+}
