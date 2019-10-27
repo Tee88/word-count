@@ -5,7 +5,7 @@ const { JSDOM } = jsdom;
 const fs = require("fs");
 
 /**
- *
+ * Responsible for seraching a word within a text and building a string result.
  * @param {string} word The word you want to search for.
  * @param {string} body The target to search on (HTML string).
  * @param {string} selector The css selector of the  trageted HTML element.
@@ -30,7 +30,7 @@ const parseText = function(word, body, selector) {
 };
 
 /**
- *
+ * Responsible for writing a given text to the <tt>and.txt</tt> file.
  * @param {string} content The text to be written in the <tt>and.txt</tt> file.
  * @returns {undefined}
  */
