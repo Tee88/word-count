@@ -1,13 +1,23 @@
+// jsdom is used to emulate enough of a subset of a web browser to be useful for testing and scraping real-world web applications.
+// check (https://github.com/jsdom/jsdom)
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const fs = require("fs");
 
+/**
+ *
+ * @param {string} word The word you want to search for.
+ * @param {string} body The target to search on (HTML string).
+ * @param {string} selector The css selector of the  trageted HTML element.
+ * @returns {string} The text to be written in the <tt>and.txt</tt> file.
+ */
 const parseText = function(word, body, selector) {
   word = word.toString().trim();
   if (!word.match(/[a-zA-Z]+/gi)) {
     throw new Error("Please insert a single word!");
   }
 
+  // regex for matching a given word within any sentence/paragraph.
   const REGEX = new RegExp("(^|\\W)" + word + "($|\\W)", "gi");
   const dom = new JSDOM(body);
   const text = dom.window.document.querySelector(selector).textContent;
@@ -19,11 +29,16 @@ const parseText = function(word, body, selector) {
   }.`;
 };
 
+/**
+ *
+ * @param {string} content The text to be written in the <tt>and.txt</tt> file.
+ * @returns {undefined}
+ */
 const writeText = function(content) {
   if (typeof content !== "string") {
     throw new Error("Received content is not of type 'string'!");
   }
-
+  // if the os is windows it will craete the 'C:\temp\' path, if not it will create '../temp'
   const directoryPath =
     process.platform === "win32" ? "C:\\temp\\" : "../temp/";
 
