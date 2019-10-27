@@ -1,3 +1,5 @@
+// 'Request' is designed to be the simplest way possible to make http calls.
+// check (https://github.com/request/request)
 const request = require("request");
 
 const parseText = require("./utils").parseText;
@@ -5,10 +7,6 @@ const writeText = require("./utils").writeText;
 
 const word = "and";
 
-/**
- * Request is designed to be the simplest way possible to make http calls.
- * @param {String}
- */
 request("http://www.randomtextgenerator.com", function(err, response, body) {
   if (err) {
     throw new Error(err);
