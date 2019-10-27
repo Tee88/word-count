@@ -10,7 +10,7 @@ const parseText = function(word, body, selector) {
 
   const REGEX = new RegExp("(^|\\W)" + word + "($|\\W)", "gi");
   const dom = new JSDOM(body);
-  const text = dom.window.document.querySelector(selector).innerHTML;
+  const text = dom.window.document.querySelector(selector).textContent;
   const count = (text.match(REGEX) || []).length;
   return `${text}
   
