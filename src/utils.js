@@ -19,8 +19,8 @@ const parseText = function(word, body, selector) {
 
   // regex for matching a given word within any sentence/paragraph.
   const REGEX = new RegExp("(^|\\W)" + word + "($|\\W)", "gi");
-  const dom = new JSDOM(body);
-  const text = dom.window.document.querySelector(selector).textContent;
+  const { document } = new JSDOM(body).window;
+  const text = document.querySelector(selector).textContent;
   const count = (text.match(REGEX) || []).length;
   return `${text}
   
